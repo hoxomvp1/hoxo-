@@ -1,4 +1,5 @@
-const CACHE = 'hoxo-v1';
+// ⚠️ BUMP THIS NUMBER EVERY TIME YOU PUSH A CHANGE
+const CACHE = 'hoxo-v2';
 const SHELL = ['/', '/index.html', '/manifest.webmanifest'];
 
 self.addEventListener('install', (e) => {
@@ -17,7 +18,6 @@ self.addEventListener('activate', (e) => {
 
 self.addEventListener('fetch', (e) => {
   const url = new URL(e.request.url);
-
   if (
     url.hostname.includes('googleapis.com') ||
     url.hostname.includes('firebase') ||
@@ -26,7 +26,6 @@ self.addEventListener('fetch', (e) => {
     url.hostname.includes('bigdatacloud') ||
     url.hostname.includes('ui-avatars')
   ) return;
-
   e.respondWith(
     fetch(e.request)
       .then((res) => {
